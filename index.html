@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Muhammed Hisham - Data Scientist Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            :root {
+                --bg-primary: #0a0a0a;
+                --bg-secondary: #111111;
+                --accent: #4f46e5;
+                --accent-hover: #6366f1;
+                --text-primary: #f3f4f6;
+                --text-secondary: #d1d5db;
+                --text-tertiary: #9ca3af;
+            }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        section {
+            padding: 6rem 0;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+            top: -250px;
+            left: -250px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 .highlight {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            box-shadow: none;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.75rem;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            background: linear-gradient(45deg, var(--accent) 0%, transparent 100%);
+            z-index: -1;
+            border-radius: 1rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-card {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+
+        .expertise-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .expertise-desc {
+            font-size: 0.95rem;
+            color: var(--text-tertiary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-card {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-desc {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+        
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--accent);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-company {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timeline-desc {
+            color: var(--text-tertiary);
+        }
+        
+        .timeline-tech {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--bg-secondary);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-desc {
+            color: var(--text-tertiary);
+            margin-bottom: 1.5rem;
+            font-size: 0.925rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--accent);
+        }
+        
+        .contact {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(79, 70, 229, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            padding: 0.75rem 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.375rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            padding: 2rem 0;
+            background-color: var(--bg-primary);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* Education section styles */
+        .education-card {
+            background-color: var(--bg-secondary);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+        
+        .education-period {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--accent);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .education-degree {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-institution {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .education-details {
+            color: var(--text-tertiary);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: auto;
+                padding-top: 120px;
+            }
+            
+            .contact {
+                padding: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+        }
+        
+        /* Typewriter effect */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            color: var(--accent);
+        }
+        
+        .typewriter::after {
+            content: '|';
+            position: absolute;
+            right: -5px;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Particle background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        /* Project hover effect */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(79, 70, 229, 0.1), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Glowing effect */
+        .glow {
+            position: relative;
+        }
+        
+        .glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 20px 5px rgba(79, 70, 229, 0.2);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .glow:hover::after {
+            opacity: 1;
+        }
+        
+        /* Chat Widget Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .chat-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chat-box {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+        
+        .chat-header {
+            padding: 1rem;
+            background-color: var(--accent);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .bot-message {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--text-primary);
+            border-top-left-radius: 0;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background-color: var(--accent);
+            color: white;
+            border-top-right-radius: 0;
+            align-self: flex-end;
+        }
+        
+        .chat-input-container {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .send-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .send-button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--text-secondary);
+            animation: typing 1.4s infinite;
+            margin: 0 2px;
+        }
+        
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+
+                /* Success Popup Styles */
+                .success-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .success-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-content {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .success-popup.show .success-content {
+            transform: translateY(0);
+        }
+        
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .success-content h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .success-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+                /* Mobile Navigation Styles */
+                .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                z-index: 99;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                animation: slideDown 0.3s ease forwards;
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.scrolled {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Interactive hover effects */
+        .skill-card, .project-card, .education-card, .btn {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .skill-card:hover, .project-card:hover, .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Touch-friendly elements */
+        @media (max-width: 768px) {
+            .btn, .social-link, .project-link {
+                padding: 0.85rem 1.75rem;  /* Larger touch targets */
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .form-control {
+                padding: 1rem;
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+            
+            input, textarea, button {
+                -webkit-appearance: none; /* Fixes iOS styling issues */
+                border-radius: 0.375rem;
+            }
+        }
+
+        .btn-download {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-download:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .about-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .btn-download, .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Muhammed<span>Hisham</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#domain-expertise">Domain</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle">☰</button>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Hi, I'm <span class="highlight">Muhammed Hisham</span><br>Data Scientist</h1>
+                    <p>
+                        I design and build advanced dashboards and machine learning use cases, including <strong>Power BI dashboards, customer segmentation, and advanced analytics</strong>, with a focus on practical implementation of cutting-edge technologies in the <strong>Retail domain</strong>.
+                    </p>
+
+                <div>
+                    <a href="#contact" class="btn">Get in Touch</a>
+                    <a href="#projects" class="btn btn-outline">View My Work</a>
+                    <a href="files/hisham_datascientist_in.pdf" download class="btn btn-download">Download CV <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-image glow">
+                    <img src="images/hisham.jpg" alt="Muhammed Hisham" width="400" height="320" style="border-radius: 10px;">
+                </div>
+            <div class="about-content">
+                    <p>
+                        I’m a Data Scientist with <strong>hands-on experience</strong> solving real-world business problems in the <strong>Retail Industry</strong> through data-driven decision-making.
+                    </p>
+                    <p>
+                        Proficient in tools and technologies including <strong>Python, PySpark, SQL, and Power BI</strong>, with a strong focus on handling large-scale datasets and uncovering actionable insights.
+                    </p>
+                    <p>
+                        My expertise lies in <strong>regression modeling, demand forecasting, inventory management, and customer segmentation</strong>, along with a solid foundation in <strong>data wrangling, EDA, feature engineering, data visualization</strong>, and ML model development.
+                    </p>
+                    <p>
+                        Passionate about continuous learning and always eager to take on challenging roles to deepen my expertise in data science and applied machine learning.
+                    </p>
+                    <div class="about-buttons">
+                        <a href="#contact" class="btn">Let's Connect</a>
+                        <a href="files/hisham_datascientist_in.pdf" download class="btn btn-outline">Download CV <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="domain-expertise" class="domain-expertise-section">
+        <div class="container">
+            <h2 class="section-title">Domain Expertise: Retail</h2>
+            <p class="section-intro">
+                As the sole Data Scientist managing the end-to-end analytics across <strong>140+ retail stores</strong>, along with <strong>10+ brands and wholesale operations</strong>, I specialize in building scalable, high-impact data solutions that drive business performance at scale.
+            </p>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-title">🧑‍🤝‍🧑 Customer Segmentation</h3>
+                    <p class="expertise-desc">Built customer profiling and clustering models across all stores to enable personalized marketing and improve retention.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">📦 Inventory Optimization</h3>
+                    <p class="expertise-desc">Analyzed multi-brand inventory flows to reduce overstock, stockouts, and aging across retail and wholesale channels.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">📈 Sales & Demand Forecasting</h3>
+                    <p class="expertise-desc">Created demand forecasting models tailored for individual outlets, brands, and product categories using historical data.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">📊 Retail KPIs & Reporting</h3>
+                    <p class="expertise-desc">Automated reports to monitor key retail KPIs such as Sell-Through Rate, Inventory Turnover, and Gross Margin Return on Investment (GMROI).</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">🧠 Scalable Dashboarding</h3>
+                    <p class="expertise-desc">Designed centralized Power BI dashboards with filters for brand, store, and region — enabling leadership to make real-time decisions.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">🌐 Cross-Domain Collaboration</h3>
+                    <p class="expertise-desc">Worked across sales, supply chain, and finance to translate business needs into production-ready data science solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Expertise</h2>
+            <div class="skills-grid">
+
+                <div class="skill-card fade-in delay-1">
+                    <div class="skill-icon">🛒</div>
+                    <h3 class="skill-name">Customer Segmentation</h3>
+                    <p class="skill-desc">Built clustering models to group customers for targeted marketing and campaign optimization.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-2">
+                    <div class="skill-icon">📊</div>
+                    <h3 class="skill-name">Dashboards</h3>
+                    <p class="skill-desc">Created interactive dashboards in Power BI to monitor sales, inventory, and operational KPIs.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-3">
+                    <div class="skill-icon">⚡</div>
+                    <h3 class="skill-name">PySpark</h3>
+                    <p class="skill-desc">Utilized PySpark to process large datasets efficiently and enable scalable data pipelines.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-4">
+                    <div class="skill-icon">📈</div>
+                    <h3 class="skill-name">Power BI</h3>
+                    <p class="skill-desc">Developed rich visualizations and reports tailored to business users and retail executives.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-1">
+                    <div class="skill-icon">📦</div>
+                    <h3 class="skill-name">Inventory Management</h3>
+                    <p class="skill-desc">Created analytics tools to minimize stockouts, overstock, and aging inventory in retail stores.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-2">
+                    <div class="skill-icon">🔍</div>
+                    <h3 class="skill-name">Data Analysis</h3>
+                    <p class="skill-desc">Performed EDA and statistical analysis to identify trends, patterns, and business opportunities.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-3">
+                    <div class="skill-icon">🐍</div>
+                    <h3 class="skill-name">Python</h3>
+                    <p class="skill-desc">Used Python for data cleaning, model development, automation, and business logic integration.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-4">
+                    <div class="skill-icon">🎯</div>
+                    <h3 class="skill-name">Forecasting</h3>
+                    <p class="skill-desc">Developed demand and sales forecasting models using historical trends and ML algorithms.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-1">
+                    <div class="skill-icon">🤖</div>
+                    <h3 class="skill-name">Machine Learning</h3>
+                    <p class="skill-desc">Implemented ML algorithms for classification, regression, and clustering use cases.</p>
+                </div>
+
+                <div class="skill-card fade-in delay-2">
+                    <div class="skill-icon">🔄</div>
+                    <h3 class="skill-name">ETL & Automation</h3>
+                    <p class="skill-desc">Automated data workflows using scheduling scripts and optimized delivery to dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card fade-in">
+                <div class="education-period">2020 - 2023</div>
+                <h3 class="education-degree">BCA Robotics Machine Learning & Artificial Intelligence</h3>
+                <div class="education-institution"></div>
+                <div class="education-details">
+                    <p>Completed my Bachelor of Computer Application degree with a focus on cutting-edge information technology concepts and applications. During my academic journey, I developed strong foundations in:</p>
+                    <ul style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-tertiary);">
+                        <li>Artificial Intelligence & Machine Learning</li>
+                        <li>Data Structures & Algorithms</li>
+                        <li>Natural Language Processing</li>
+                        <li>Computer Networks</li>
+                        <li>Database Management Systems</li>
+                        <li>Web Development Technologies</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Participated in numerous technical workshops and hackathons, enhancing my problem-solving abilities and collaborative coding skills while working on real-world projects.</p>
+                </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">November 2024 - Present</div>
+                    <h3 class="timeline-title">Data Scientist</h3>
+                    <div class="timeline-company">Nesto Technologies</div>
+                    <div class="timeline-desc">
+                        <!-- <p>Responsible for providing valuable business development insights and models across all the companies within the parent organization (Western International Group).</p>
+                        <p>• Implemented Customer Segmentation for improving customer engagement</p>
+                        <p>• Implemented the Inventory Management Application which helps in minimizing stockout, excess, and aging scenarios</p>
+                        <p>• Developed Sales Forecasting and Demand Forecasting models using historical data from multiple data sources to assist the business team in reducing storage costs</p>
+                        <p>• Implemented new KPIs like Sell Through, Inventory Turnover Ratio, etc., for business users to optimize inventory</p> -->
+                        <!-- <ul>
+                            <li>Responsible for providing valuable business development insights and models across all the companies within the parent organization (Western International Group).</li>
+                            <li>Implemented Customer Segmentation for improving customer engagement</li>
+                            <li>Implemented Inventory Management Application to minimize stockout, excess, and aging scenarios</li>
+                            <li>Developed Sales and Demand Forecasting models using historical data from multiple sources to reduce storage costs</li>
+                            <li>Introduced KPIs like Sell Through, Inventory Turnover Ratio, etc., to help optimize inventory</li>
+                        </ul> -->
+                        <ul>
+                            <li>
+                            <strong>Business Insights & Analytics:</strong> Delivered actionable data models and insights across all companies within the parent organization, <strong>Western International Group</strong>, driving business growth and operational efficiency.
+                            </li>
+                            <li>
+                            <strong>Customer Segmentation:</strong> Implemented clustering techniques to segment customers and tailor marketing strategies, resulting in improved engagement and targeted outreach.
+                            </li>
+                            <li>
+                            <strong>Inventory Optimization System:</strong> Built a data-driven <strong>Inventory Management Application</strong> to reduce stockouts, overstocking, and aging inventory issues across retail outlets.
+                            </li>
+                            <li>
+                            <strong>Forecasting Models:</strong> Developed <strong>Sales and Demand Forecasting</strong> models using historical data from multiple sources to assist in planning and reduce storage and holding costs.
+                            </li>
+                            <li>
+                            <strong>Business KPIs:</strong> Introduced and automated tracking of key performance indicators such as <strong>Sell-Through Rate</strong>, <strong>Inventory Turnover Ratio</strong>, and others to help business units make data-informed decisions.
+                            </li>
+                        </ul>
+
+                   </div>
+                    <div class="timeline-tech">
+                        <span class="tech-tag">Customer Analytics</span>
+                        <span class="tech-tag">Retail Analytics</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Bigdata</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Business Insights</span>
+                        <span class="tech-tag">Sales Forecasting</span>
+                        <span class="tech-tag">Demand Forecasting</span>
+                    </div>
+
+                    <div class="timeline-item">
+                    <br></br>
+                    <div class="timeline-date">September 2023 - November 2024</div>
+                    <h3 class="timeline-title">Junior Data Scientist</h3>
+                    <div class="timeline-company">Nesto Technologies</div>
+                    <div class="timeline-desc">
+                         <ul>
+                            <li>
+                            <strong>Data Automation & Delivery:</strong> Scripted and scheduled daily ETL processes to feed web-based data visualizations, achieving up to <strong>80% higher performance efficiency</strong> compared to legacy SAP BW systems.
+                            </li>
+                            <li>
+                            <strong>Dashboard Development:</strong> Designed and maintained interactive dashboards using tools like Power BI or web-based platforms to address business-specific data visualization needs.
+                            </li>
+                            <li>
+                            <strong>Big Data Environment Setup:</strong> Contributed to the initial setup and deployment of an <strong>on-premise Big Data environment</strong>, enabling scalable data handling and future ML model integration.
+                            </li>
+                        </ul>
+                        <!-- <p>Working on developing advanced AI voicebots and voice agents integrated with telephony systems using Asterisk. Implementing LLM-powered solutions for customer support automation and building RAG pipelines to enhance information access.</p>
+                        <p>Exploring and prototyping Agentic AI solutions for proactive customer engagement while collaborating on end-to-end deployment of AI systems in production environments.</p> -->
+                    </div>
+                    <div class="timeline-tech">
+                        <span class="tech-tag">Data Visualisation</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Data Cleaning</span>
+                        <span class="tech-tag">Data Analysis</span>
+
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2022 - July 2022</div>
+                    <h3 class="timeline-title">Machine Learning Intern</h3>
+                    <div class="timeline-company">Cognitive Solutions</div>
+                    <div class="timeline-desc">
+                            <ul>
+                                <li>
+                                    <strong>Data Cleaning & Preprocessing:</strong> Handled raw datasets by performing missing value imputation, encoding categorical variables, normalization, and feature engineering using Python libraries like Pandas and NumPy.
+                                </li>
+                                <li>
+                                    <strong>Exploratory Data Analysis (EDA):</strong> Visualized data distributions, correlations, and patterns using tools like Matplotlib and Seaborn to derive meaningful insights.
+                                </li>
+                                <li>
+                                    <strong>Model Building:</strong> Implemented and evaluated various machine learning algorithms including Linear Regression, Decision Trees, and K-Nearest Neighbors using Scikit-learn.
+                                </li>
+                                <li>
+                                    <strong>Model Evaluation:</strong> Measured model performance using accuracy, precision, recall, and confusion matrix, and fine-tuned hyperparameters for better accuracy.
+                                </li>
+                                <li>
+                                    <strong>Project Documentation:</strong> Documented the workflow, model pipeline, and key findings as part of final academic submission and presentation.
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="timeline-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">EDA</span>
+                        <span class="tech-tag">Data Cleaning</span>
+                        <span class="tech-tag">ML Algorithms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1: Customer Segmentation -->
+                <div class="project-card glow">
+                    <div class="project-image">
+                        <img src="images/customersegmentation.jpg" alt="Customer Segmentation" width="400" height="320" style="border-radius: 10px;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Customer Segmentation</h3>
+                        <p class="project-desc">
+                            Developed a customer segmentation model using clustering algorithms to categorize users based on purchase behavior and demographics for targeted marketing.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">K-Means</span>
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">Power BI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-voice-agent.html" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Inventory Optimisation -->
+                <div class="project-card glow">
+                    <div class="project-image">
+                        <img src="images/inventory.jpg" alt="Inventory Optimisation" width="400" height="320" style="border-radius: 10px;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Inventory Optimisation</h3>
+                        <p class="project-desc">
+                            Built a data-driven inventory management system to reduce stockouts, overstock, and aging inventory using forecasting and classification models.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Forecasting</span>
+                            <span class="tech-tag">Retail Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-rag-system.html" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Email Spam Filtering -->
+                <div class="project-card glow">
+                    <div class="project-image">
+                        <img src="images/emailspam.jpg" alt="Email Spam Filtering" width="400" height="320" style="border-radius: 10px;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Email Spam Filtering</h3>
+                        <p class="project-desc">
+                            Built a classification model using NLP techniques to filter spam emails based on text features and improve email system security and performance.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Naive Bayes</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-autonomous-agent.html" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p>I'm currently looking for new opportunities to apply my Data Science skills. Whether you have a question, a project idea, or just want to connect, I'd love to hear from you!</p>
+                        <div class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>m.hishamds@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+91 97445 42503</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Villiappally, Kozhikode, Kerala, India, 673542</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/m-hishamds" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/muhammed-hisham4/" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/i.hishaaam/?hl=en" class="social-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xanonqjl" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                    
+                    <!-- Success Message Popup -->
+                    <div id="successPopup" class="success-popup">
+                        <div class="success-content">
+                            <div class="success-icon">✓</div>
+                            <h3>Message Sent!</h3>
+                            <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                            <button id="closePopup" class="btn">Close</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="#skills" class="footer-link">Skills</a>
+                <a href="#education" class="footer-link">Education</a>
+                <a href="#experience" class="footer-link">Experience</a>
+                <a href="#projects" class="footer-link">Projects</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Muhammed Hisham. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-widget">
+        <div class="chat-icon" id="chat-icon">
+            <i class="fas fa-comment-alt"></i>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <div class="chat-header">
+                <div class="chat-title">Chat with Hisham AI</div>
+                <button class="close-chat" id="close-chat">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            <div class="typing-indicator" id="typing-indicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Ask me anything about Hisham...">
+                <button class="send-button" id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Animate timeline items on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+        
+        // Mobile navigation toggle
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileNavToggle.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Hide mobile nav after clicking
+                    if (window.innerWidth < 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Typewriter effect for skills
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add typewriter class to skill names for animation
+            const skillNames = document.querySelectorAll('.skill-name');
+            skillNames.forEach(name => {
+                name.classList.add('typewriter');
+            });
+        });
+
+                // Chat functionality
+                document.addEventListener('DOMContentLoaded', function() {
+            const chatIcon = document.getElementById('chat-icon');
+            const chatBox = document.getElementById('chat-box');
+            const closeChat = document.getElementById('close-chat');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatInput = document.getElementById('chat-input');
+            const sendButton = document.getElementById('send-button');
+            const typingIndicator = document.getElementById('typing-indicator');
+            
+            // Knowledge base for RAG (this would be loaded from a file in a real implementation)
+            const knowledgeBase = {
+                "name": "Muhammed Hisham",
+                "role": "Data Scientist",
+                "expertise": ["AI Voicebots", "RASA NLP", "Asterisk & Telephony", "LLMs", "RAG Systems", "Agentic AI", "Python", "Open Source Tech"],
+                "education": {
+                    "degree": "BCA Robotics Machine Learning & Artificial Intelligence",
+                    "institution": "Yenepoya University Mangalore",
+                    "period": "2020 - 2023"
+                },
+                "experience": {
+                    "current": {
+                        "role": "Data Scientist",
+                        "company": "Nesto Technologies",
+                        "period": "September 2023 - Present",
+                        "description": "Working on developing advanced AI voicebots and voice agents integrated with telephony systems using Asterisk. Implementing LLM-powered solutions for customer support automation and building RAG pipelines to enhance information access."
+                    }
+                },
+                "projects": [
+                    {
+                        "title": "Customer Segmentation",
+                        "description": "A sophisticated AI voice agent powered by LLMs and integrated with telephony systems for natural conversations and customer support automation.",
+                        "technologies": ["RASA", "Asterisk", "LLMs", "Python"]
+                    },
+                    {
+                        "title": "Inventory Optimisation",
+                        "description": "Retrieval-Augmented Generation system for enterprise knowledge management, providing accurate information retrieval and contextual responses.",
+                        "technologies": ["LangChain", "Vector DB", "LLMs", "FastAPI"]
+                    },
+                    {
+                        "title": "Autonomous AI Agent",
+                        "description": "Self-directed AI agent capable of reasoning, planning, and executing complex multi-step tasks with minimal human intervention.",
+                        "technologies": ["LLM Chains", "ReAct", "Tool Use", "Python"]
+                    }
+                ],
+                "contact": {
+                    "email": "m.hishamds@gmail.com",
+                    "phone": "+91 97445 42503",
+                    "location": "Villiappally, Kozhikode, Kerala, India, 673542"
+                }
+            };
+            
+            // Welcome messages
+            const welcomeMessages = [
+                "👋 Hi there! I'm Hisham's AI assistant. Ask me anything about his skills, projects, or experience!",
+                "Hello! Want to know more about Hisham's Data Science expertise? I'm here to help!",
+                "Welcome! I can tell you all about Hisham's work with Data, Powerbi, and more. What would you like to know?",
+                "Hi there! Curious about Hisham's Data Science skills? Feel free to ask me anything!",
+                "Hello! I'm here to share insights about Hisham's experience with Retail AI and ML. What interests you?"
+            ];
+            
+            // Simple RAG function to find relevant information
+            function findRelevantInfo(query) {
+                query = query.toLowerCase();
+                
+                // Check for specific information requests
+                if (query.includes("name") || query.includes("who")) {
+                    return `Muhammed Hisham is an Data Scientist with expertise in Retail domain with bigdata systems.`;
+                }
+                
+                if (query.includes("education") || query.includes("study") || query.includes("college") || query.includes("degree")) {
+                    return `Hisham graduated with a BCA Robotics Machine Learning & Artificial Intelligence from Yenepoya University in 2023, where he developed a strong foundation in computer science principles and specialized in AI/ML technologies.`;
+                }
+                
+                if (query.includes("work") || query.includes("job") || query.includes("company") || query.includes("experience")) {
+                    return `Hisham currently works at Nesto Technologies as an Data Scientist since September 2023. He's developing advanced ML models and Dashboards with pyspark pipeline and powerbi for helping business.`;
+                }
+                
+                if (query.includes("project") || query.includes("portfolio") || query.includes("work")) {
+                    return `Hisham has worked on several projects including: 1) An Intelligent Voice Agent using RASA and Asterisk, 2) An Enterprise RAG System for knowledge management, and 3) An Autonomous AI Agent capable of reasoning and executing complex tasks.`;
+                }
+                
+                if (query.includes("skill") || query.includes("expertise") || query.includes("technology") || query.includes("tech")) {
+                    return `Hisham's key skills include AI Voicebots, RASA NLP, Asterisk & Telephony integration, working with LLMs (like GPT and Mistral), building RAG Systems, developing Agentic AI, Python programming, and leveraging open-source technologies.`;
+                }
+                
+                if (query.includes("contact") || query.includes("email") || query.includes("phone") || query.includes("reach")) {
+                    return `You can contact Hisham via email at m.hishamds@gmail.com or by phone at +91 97445 42503. He's located in Villiappally, Kozhikode, Kerala, India.`;
+                }
+                
+                if (query.includes("hello") || query.includes("hi") || query.includes("hey") || query.includes("greetings")) {
+                    return `Hello! I'm Hisham's AI assistant. How can I help you learn more about him today?`;
+                }
+                
+                // Default response for unknown queries
+                return `I don't have specific information about that, but Hisham is a Data Scientist specializing in conversational AI, LLMs, and RAG systems. Would you like to know about his projects, skills, or experience instead?`;
+            }
+            
+            // Add a message to the chat
+            function addMessage(message, isUser = false) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.classList.add(isUser ? 'user-message' : 'bot-message');
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Show typing indicator
+            function showTypingIndicator() {
+                typingIndicator.style.display = 'block';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Hide typing indicator
+            function hideTypingIndicator() {
+                typingIndicator.style.display = 'none';
+            }
+            
+            // Process user message and generate response
+            function processMessage() {
+                const userMessage = chatInput.value.trim();
+                if (userMessage === '') return;
+                
+                // Add user message to chat
+                addMessage(userMessage, true);
+                chatInput.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                // Simulate processing time (would be actual processing in a real implementation)
+                setTimeout(() => {
+                    // Hide typing indicator
+                    hideTypingIndicator();
+                    
+                    // Get response from RAG system
+                    const response = findRelevantInfo(userMessage);
+                    
+                    // Add bot response to chat
+                    addMessage(response);
+                }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+            }
+            
+            // Event listeners
+            chatIcon.addEventListener('click', () => {
+                chatBox.style.display = 'flex';
+                chatIcon.style.display = 'none';
+                
+                // Add welcome message if chat is empty
+                if (chatMessages.children.length === 0) {
+                    const randomWelcome = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+                    addMessage(randomWelcome);
+                }
+            });
+            
+            closeChat.addEventListener('click', () => {
+                chatBox.style.display = 'none';
+                chatIcon.style.display = 'flex';
+            });
+            
+            sendButton.addEventListener('click', processMessage);
+            
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    processMessage();
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const successPopup = document.getElementById('successPopup');
+            const closePopup = document.getElementById('closePopup');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent the default form submission
+                    
+                    const formData = new FormData(contactForm);
+                    
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success popup
+                            successPopup.classList.add('show');
+                            // Reset form
+                            contactForm.reset();
+                            return response.json();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Oops! There was a problem submitting your form. Please try again.');
+                    });
+                });
+            }
+            
+            if (closePopup) {
+                closePopup.addEventListener('click', function() {
+                    successPopup.classList.remove('show');
+                });
+            }
+            
+            // Close popup when clicking outside
+            successPopup.addEventListener('click', function(e) {
+                if (e.target === successPopup) {
+                    successPopup.classList.remove('show');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            const successPopup = document.getElementById('successPopup');
+            const closePopup = document.getElementById('closePopup');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success popup
+                            successPopup.classList.add('show');
+                            // Reset form
+                            contactForm.reset();
+                            return response.json();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Oops! There was a problem submitting your form. Please try again.');
+                    });
+                });
+            }
+            
+            if (closePopup) {
+                closePopup.addEventListener('click', function() {
+                    successPopup.classList.remove('show');
+                });
+            }
+            
+            // Close popup when clicking outside
+            if (successPopup) {
+                successPopup.addEventListener('click', function(e) {
+                    if (e.target === successPopup) {
+                        successPopup.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Mobile Navigation Menu
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileNavToggle) {
+                mobileNavToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    mobileNavToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                });
+            }
+            
+            // Close mobile menu when clicking a link
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        mobileNavToggle.textContent = '☰';
+                    }
+                });
+            });
+            
+            // Scroll animations
+            const scrollElements = document.querySelectorAll('.fade-in');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('scrolled');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('scrolled');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    } else {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Initialize scroll animations
+            handleScrollAnimation();
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        });
+
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    
+    <!-- Particles.js for background effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#4f46e5"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.1,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#4f46e5",
+                        "opacity": 0.1,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 0.3
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize particles.js
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#4f46e5"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.3,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#4f46e5",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 0.5
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+    });
+</script>
+</body>
+</html>
