@@ -415,12 +415,18 @@
             color: var(--text-secondary);
         }
         
-        .projects-grid {
+/*         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
+        } */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Force exactly 4 columns */
+            gap: 2rem;
+            overflow-x: auto; /* Optional: makes it scrollable if screen is too small */
         }
-        
+                
         .project-card {
             background-color: var(--bg-secondary);
             border-radius: 0.75rem;
