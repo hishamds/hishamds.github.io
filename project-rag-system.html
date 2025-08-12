@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise RAG System - Muhammed Fahim</title>
+    <title>Inventory Analytics Platform - Muhammed Hisham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -53,11 +53,6 @@
             transition: all 0.3s ease;
         }
         
-        nav.scrolled {
-            padding: 1rem 0;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-        }
-        
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -94,6 +89,18 @@
             box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
         }
         
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            box-shadow: none;
+        }
+        
         .project-header {
             padding-top: 120px;
             padding-bottom: 60px;
@@ -102,11 +109,11 @@
         
         .project-title {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .project-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
@@ -114,51 +121,33 @@
         .project-meta {
             display: flex;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
         
         .meta-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
         }
         
-        .meta-label {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .meta-value {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-        
-        .project-image {
-            width: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
-            margin-bottom: 3rem;
-            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .meta-icon {
+            color: var(--accent);
+            font-size: 1.25rem;
         }
         
         .project-content {
+            padding: 4rem 0;
+        }
+        
+        .content-section {
             margin-bottom: 4rem;
         }
         
-        .project-section {
-            margin-bottom: 3rem;
-        }
-        
         .section-title {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
             position: relative;
         }
         
@@ -167,89 +156,222 @@
             position: absolute;
             left: 0;
             bottom: -0.5rem;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background-color: var(--accent);
-            border-radius: 1.5px;
+            border-radius: 2px;
+        }
+        
+        .highlight-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
         
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
         }
         
         .tech-tag {
+            padding: 0.5rem 1rem;
             background-color: rgba(79, 70, 229, 0.1);
             color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
             font-weight: 500;
+            border: 1px solid rgba(79, 70, 229, 0.2);
         }
         
-        .project-features {
-            margin-left: 1.5rem;
-            margin-bottom: 2rem;
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
-        .project-features li {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-        
-        .back-button {
-            margin-top: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .architecture-diagram {
+        .step-card {
             background-color: var(--bg-secondary);
             padding: 2rem;
             border-radius: 1rem;
-            margin-bottom: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
         }
         
-        .architecture-diagram img {
-            width: 100%;
-            height: auto;
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
         }
         
-        .code-block {
-            background-color: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin-bottom: 2rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .footer-content {
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
         }
         
-        .copyright {
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
+        .step-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .results-section {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(79, 70, 229, 0.05);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+        
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .result-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .result-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-hover);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
         
         @media (max-width: 768px) {
             .project-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .project-meta {
@@ -257,268 +379,289 @@
                 gap: 1rem;
             }
             
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
+    <nav>
         <div class="container nav-content">
-            <a href="portfolio.html" class="logo">Muhammed<span>Fahim</span></a>
+            <a href="index.html" class="logo">Muhammed<span>Hisham</span></a>
+            <a href="index.html" class="btn btn-outline">← Back to Portfolio</a>
         </div>
     </nav>
     
-    <header class="project-header">
+    <section class="project-header">
         <div class="container">
-            <h1 class="project-title">Enterprise RAG System</h1>
-            <p class="project-subtitle">Retrieval-Augmented Generation system for enterprise knowledge management, providing accurate information retrieval and contextual responses.</p>
-            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <h1 class="project-title">Inventory Analytics Platform</h1>
+            <p class="project-subtitle">
+                Comprehensive inventory management system processing 100M+ transactions, reducing stockouts by 40% 
+                and aging inventory by 60% through predictive analytics and automated alert systems.
+            </p>
             <div class="project-meta">
+
                 <div class="meta-item">
-                    <span class="meta-label">Project Type</span>
-                    <span class="meta-value">Knowledge Management</span>
+                    <i class="fas fa-database meta-icon"></i>
+                    <span>10M+ Transactions</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Duration</span>
-                    <span class="meta-value">4 months</span>
+                    <i class="fas fa-store meta-icon"></i>
+                    <span>140+ Retail Stores</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Role</span>
-                    <span class="meta-value">Lead Developer</span>
+                    <i class="fas fa-chart-line meta-icon"></i>
+                    <span>55% Stockout Reduction</span>
                 </div>
-            </div>
-            
-            <div class="tech-stack">
-                <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">Vector DB</span>
-                <span class="tech-tag">LLMs</span>
-                <span class="tech-tag">FastAPI</span>
-                <span class="tech-tag">Embeddings</span>
-                <span class="tech-tag">Semantic Search</span>
             </div>
         </div>
-    </header>
+    </section>
     
-    <main class="container">
-        <div class="project-image">
-            <img src="images/rag-detail.jpg" alt="Enterprise RAG System" width="1200" height="600">
-        </div>
-        
-        <div class="project-content">
-            <section class="project-section">
+    <section class="project-content">
+        <div class="container">
+            <div class="content-section">
                 <h2 class="section-title">Project Overview</h2>
-                <p>The Enterprise RAG System is a comprehensive knowledge management solution that combines the power of large language models with enterprise-specific information retrieval. By implementing Retrieval-Augmented Generation (RAG), the system provides accurate, contextual responses grounded in an organization's proprietary knowledge base.</p>
-                <p>This project addresses a critical challenge in enterprise environments: enabling AI systems to access and leverage internal knowledge that isn't part of public training data. The RAG approach ensures responses are factual, up-to-date, and aligned with company policies and information.</p>
-            </section>
-            
-            <section class="project-section">
-                <h2 class="section-title">Key Features</h2>
-                <ul class="project-features">
-                    <li><strong>Document Processing Pipeline:</strong> Automated ingestion and processing of various document formats (PDF, DOCX, HTML, Markdown) with metadata extraction.</li>
-                    <li><strong>Semantic Chunking:</strong> Advanced document chunking that preserves semantic meaning rather than arbitrary splits.</li>
-                    <li><strong>Vector Database Integration:</strong> High-performance vector storage with Pinecone/Weaviate for efficient similarity search.</li>
-                    <li><strong>Hybrid Search:</strong> Combines semantic (vector) search with keyword-based search for improved retrieval accuracy.</li>
-                    <li><strong>Context Window Optimization:</strong> Smart context assembly that maximizes relevant information within LLM token limits.</li>
-                    <li><strong>Query Rewriting:</strong> Automatic query expansion and reformulation to improve retrieval performance.</li>
-                    <li><strong>Citation and Source Tracking:</strong> Transparent attribution of information sources in generated responses.</li>
-                    <li><strong>Multi-Modal Support:</strong> Ability to process and retrieve information from text, images, and structured data.</li>
-                </ul>
-            </section>
-            
-            <section class="project-section">
-                <h2 class="section-title">Technical Architecture</h2>
-                <div class="architecture-diagram">
-                    <img src="images/rag-architecture.jpg" alt="RAG System Architecture Diagram" width="1000" height="500">
+                <p>
+                    Developed a comprehensive inventory analytics platform that consolidates stock data, 
+                    sales, purchases, and forecast models across Western International Group's retail network. 
+                    The system provides automated alert-based reporting for auto-replenishment and risk flagging, 
+                    resulting in significant capital optimization and reduced stockouts.
+                </p>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🎯 Key Objectives</h3>
+                    <ul>
+                        <li>Minimize stockouts and excess inventory across 140+ retail stores</li>
+                        <li>Reduce aging inventory and optimize capital allocation</li>
+                        <li>Provide inventory insights and automated alerts</li>
+                        <li>Enable data-driven procurement and replenishment decisions</li>
+                        <li>Integrate with existing ERP and POS systems</li>
+                    </ul>
                 </div>
-                <p>The RAG system architecture consists of several key components:</p>
-                <ul class="project-features">
-                    <li><strong>Document Ingestion Layer:</strong> Processes and normalizes documents from various sources.</li>
-                    <li><strong>Embedding Pipeline:</strong> Converts text chunks into high-dimensional vector representations.</li>
-                    <li><strong>Vector Database:</strong> Stores and indexes embeddings for efficient similarity search.</li>
-                    <li><strong>Retrieval Engine:</strong> Implements sophisticated retrieval strategies including:
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li><strong>Dense Retrieval:</strong> Vector-based semantic similarity search.</li>
-                            <li><strong>Sparse Retrieval:</strong> Keyword and metadata-based filtering.</li>
-                            <li><strong>Hybrid Search:</strong> Combination of dense and sparse approaches.</li>
-                            <li><strong>Re-ranking:</strong> Post-retrieval prioritization of most relevant documents.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Context Assembly:</strong> Constructs optimal context windows from retrieved documents.</li>
-                    <li><strong>Generation Layer:</strong> Interfaces with LLMs to produce coherent, contextually relevant responses.</li>
-                    <li><strong>API Layer:</strong> FastAPI-based interface for integration with other enterprise systems.</li>
-                </ul>
-            </section>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Implementation Challenges</h2>
-                <p>Building the enterprise RAG system presented several technical challenges:</p>
-                <ul class="project-features">
-                    <li><strong>Document Heterogeneity:</strong> Handling diverse document formats, structures, and quality levels.</li>
-                    <li><strong>Semantic Chunking:</strong> Developing algorithms that preserve context while creating optimal-sized chunks.</li>
-                    <li><strong>Retrieval Quality:</strong> Balancing precision and recall in document retrieval across diverse query types.</li>
-                    <li><strong>Hallucination Mitigation:</strong> Implementing techniques to prevent LLMs from generating incorrect information.</li>
-                    <li><strong>Scalability:</strong> Designing the system to handle growing knowledge bases without performance degradation.</li>
-                    <li><strong>Real-time Performance:</strong> Optimizing retrieval and generation for low-latency responses.</li>
-                    <li><strong>Security and Access Control:</strong> Ensuring information retrieval respects user permissions and data sensitivity.</li>
-                </ul>
-            </section>
-            
-            <section class="project-section">
+            <div class="content-section">
                 <h2 class="section-title">Technical Implementation</h2>
-                <p>The RAG system was implemented using a combination of cutting-edge technologies:</p>
                 
-                <div class="code-block">
-# Document Processing Pipeline
-from langchain.document_loaders import PyPDFLoader, Docx2txtLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-# Load documents from various sources
-def load_documents(file_path):
-    if file_path.endswith('.pdf'):
-        loader = PyPDFLoader(file_path)
-    elif file_path.endswith('.docx'):
-        loader = Docx2txtLoader(file_path)
-    # Additional loaders for other formats
-    
-    documents = loader.load()
-    return documents
-
-# Semantic chunking with overlap
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,
-    chunk_overlap=200,
-    separators=["\n\n", "\n", ". ", " ", ""]
-)
-chunks = text_splitter.split_documents(documents)
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-number">10M+</span>
+                        <span class="metric-label">Transactions Processed</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">140+</span>
+                        <span class="metric-label">Retail Stores</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">55%</span>
+                        <span class="metric-label">Stockout Reduction</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">75%</span>
+                        <span class="metric-label">Aging Inventory Reduction</span>
+                    </div>
                 </div>
                 
-                <div class="code-block">
-# Vector embedding and storage
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Pinecone
-import pinecone
-
-# Initialize embedding model
-embeddings = OpenAIEmbeddings()
-
-# Initialize vector database
-pinecone.init(api_key="YOUR_API_KEY", environment="YOUR_ENV")
-index_name = "enterprise-knowledge"
-
-# Create or connect to existing index
-vectorstore = Pinecone.from_documents(
-    documents=chunks,
-    embedding=embeddings,
-    index_name=index_name
-)
+                <h3>Technology Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">PySpark</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Forecasting Models</span>
+                    <span class="tech-tag">Real-time Analytics</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">ETL Pipelines</span>
                 </div>
-                
-                <div class="code-block">
-# Hybrid retrieval implementation
-from langchain.retrievers import ContextualCompressionRetriever
-from langchain.retrievers.document_compressors import LLMChainExtractor
-
-# Base retriever
-base_retriever = vectorstore.as_retriever(
-    search_type="similarity",
-    search_kwargs={"k": 10}
-)
-
-# LLM for contextual compression
-llm = ChatOpenAI(temperature=0, model="gpt-4")
-compressor = LLMChainExtractor.from_llm(llm)
-
-# Create compression retriever
-compression_retriever = ContextualCompressionRetriever(
-    base_compressor=compressor,
-    base_retriever=base_retriever
-)
-
-# Retrieve documents with context
-compressed_docs = compression_retriever.get_relevant_documents(query)
-                </div>
-                
-                <div class="code-block">
-# RAG Chain with source attribution
-from langchain.chains import RetrievalQAWithSourcesChain
-from langchain.chat_models import ChatOpenAI
-
-# Initialize LLM
-llm = ChatOpenAI(model_name="gpt-4", temperature=0)
-
-# Create RAG chain with sources
-rag_chain = RetrievalQAWithSourcesChain.from_chain_type(
-    llm=llm,
-    chain_type="stuff",
-    retriever=compression_retriever,
-    return_source_documents=True,
-    chain_type_kwargs={
-        "prompt": CUSTOM_PROMPT_TEMPLATE
-    }
-)
-
-# Generate response with citations
-response = rag_chain({"question": user_query})
-answer = response["answer"]
-sources = response["sources"]
-                </div>
-            </section>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Use Cases</h2>
-                <p>The Enterprise RAG System has been deployed across several business functions:</p>
-                <ul class="project-features">
-                    <li><strong>Internal Knowledge Base:</strong> Providing employees with accurate information about company policies, procedures, and best practices.</li>
-                    <li><strong>Customer Support:</strong> Enabling support agents to quickly retrieve relevant product information and troubleshooting steps.</li>
-                    <li><strong>Legal and Compliance:</strong> Assisting legal teams in retrieving and analyzing relevant clauses and regulations from large document collections.</li>
-                    <li><strong>Research and Development:</strong> Helping R&D teams access and synthesize information from technical documentation and research papers.</li>
-                    <li><strong>Sales Enablement:</strong> Providing sales teams with accurate product information and competitive intelligence.</li>
-                    <li><strong>Employee Onboarding:</strong> Accelerating new hire training by providing contextual information about company processes and systems.</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Platform Features</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">Real-Time Monitoring</h3>
+                        <p class="feature-desc">
+                            Live inventory tracking across all stores with instant alerts for low stock, 
+                            overstock, and aging inventory scenarios.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3 class="feature-title">Automated Alerts</h3>
+                        <p class="feature-desc">
+                            Smart notification system for auto-replenishment triggers, risk flagging, 
+                            and critical inventory thresholds.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">Predictive Analytics</h3>
+                        <p class="feature-desc">
+                            Advanced forecasting models using historical data to predict demand patterns 
+                            and optimize inventory levels.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">Data Integration</h3>
+                        <p class="feature-desc">
+                            Seamless integration with ERP systems, POS data, and supplier information 
+                            for comprehensive inventory management.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3 class="feature-title">Mobile Dashboard</h3>
+                        <p class="feature-desc">
+                            Responsive Power BI dashboards accessible on mobile devices for 
+                            on-the-go inventory management.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Performance Optimization</h3>
+                        <p class="feature-desc">
+                            High-performance data processing using PySpark for handling large-scale 
+                            inventory datasets efficiently.
+                        </p>
+                    </div>
+                </div>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Results and Impact</h2>
-                <p>The implementation of the Enterprise RAG System delivered significant business value:</p>
-                <ul class="project-features">
-                    <li>Reduced information retrieval time by 85% compared to traditional search methods</li>
-                    <li>Improved answer accuracy from 67% to 94% when compared to standalone LLM responses</li>
-                    <li>Decreased employee onboarding time by 40% through improved access to relevant information</li>
-                    <li>Reduced customer support resolution times by 35% by providing agents with accurate information</li>
-                    <li>Eliminated 95% of hallucinations and factual errors in AI-generated responses</li>
-                    <li>Scaled to handle over 100,000 documents with sub-second query response times</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Implementation Process</h2>
+                
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Data Architecture Design</h3>
+                        <p class="step-desc">
+                            Designed scalable data architecture to handle inventory data from 140+ stores, 
+                            including real-time data ingestion and processing pipelines.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">ETL Pipeline Development</h3>
+                        <p class="step-desc">
+                            Built automated ETL processes using PySpark to consolidate inventory data 
+                            from multiple sources and systems.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Forecasting Model Development</h3>
+                        <p class="step-desc">
+                            Implemented demand forecasting models using historical sales data to predict 
+                            inventory requirements and optimize stock levels.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Alert System Implementation</h3>
+                        <p class="step-desc">
+                            Created automated alert mechanisms for low stock, overstock, and aging inventory, 
+                            enabling proactive inventory management.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">Dashboard Development</h3>
+                        <p class="step-desc">
+                            Built comprehensive Power BI dashboards with real-time KPIs, interactive filters, 
+                            and drill-down capabilities for detailed analysis.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">System Integration</h3>
+                        <p class="step-desc">
+                            Integrated the platform with existing ERP and POS systems, ensuring seamless 
+                            data flow and operational continuity.
+                        </p>
+                    </div>
+                </div>
+            </div>
             
-            <div class="back-button">
-                <a href="portfolio.html#projects" class="btn">← Back to Projects</a>
+            <div class="content-section">
+                <h2 class="section-title">Business Impact & Results</h2>
+                
+                <div class="results-section">
+                    <h3>📈 Key Achievements</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-icon">📦</div>
+                            <h3 class="result-title">55% Stockout Reduction</h3>
+                            <p class="result-desc">Significantly reduced out-of-stock scenarios across all stores</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">💰</div>
+                            <h3 class="result-title">75% Aging Inventory Reduction</h3>
+                            <p class="result-desc">Optimized inventory turnover and reduced capital tied up in slow-moving items</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">⚡</div>
+                            <h3 class="result-title">Real-Time Visibility</h3>
+                            <p class="result-desc">Instant access to inventory status across all 140+ retail locations</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">🎯</div>
+                            <h3 class="result-title">Automated Alerts</h3>
+                            <p class="result-desc">Proactive notifications for inventory issues and replenishment needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Technical Challenges & Solutions</h2>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🔧 Challenges Overcome</h3>
+                    <ul>
+                        <li><strong>Data Scale:</strong> Processed 10M+ transactions using PySpark for distributed computing</li>
+                        <li><strong>Real-time Processing:</strong> Implemented streaming data pipelines for live inventory updates</li>
+                        <li><strong>System Integration:</strong> Connected multiple legacy systems through standardized APIs</li>
+                        <li><strong>Performance Optimization:</strong> Optimized query performance and dashboard refresh rates</li>
+                        <li><strong>User Adoption:</strong> Created intuitive interfaces for non-technical inventory managers</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
     
-    <footer>
-        <div class="container footer-content">
-            <a href="portfolio.html" class="logo">Muhammed<span>Fahim</span></a>
-            <div class="copyright">
-                &copy; 2025 Muhammed Fahim. All rights reserved.
-            </div>
+    <footer style="padding: 2rem 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+            <a href="index.html" class="btn">← Back to Portfolio</a>
         </div>
     </footer>
-    
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
