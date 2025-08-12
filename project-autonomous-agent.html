@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous AI Agent - Muhammed Fahim</title>
+    <title>Retail Fraud Detection System - Muhammed Hisham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -53,11 +53,6 @@
             transition: all 0.3s ease;
         }
         
-        nav.scrolled {
-            padding: 1rem 0;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-        }
-        
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -94,6 +89,18 @@
             box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
         }
         
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            box-shadow: none;
+        }
+        
         .project-header {
             padding-top: 120px;
             padding-bottom: 60px;
@@ -102,11 +109,11 @@
         
         .project-title {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .project-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
@@ -114,51 +121,33 @@
         .project-meta {
             display: flex;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
         
         .meta-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
         }
         
-        .meta-label {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .meta-value {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-        
-        .project-image {
-            width: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
-            margin-bottom: 3rem;
-            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .meta-icon {
+            color: var(--accent);
+            font-size: 1.25rem;
         }
         
         .project-content {
+            padding: 4rem 0;
+        }
+        
+        .content-section {
             margin-bottom: 4rem;
         }
         
-        .project-section {
-            margin-bottom: 3rem;
-        }
-        
         .section-title {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
             position: relative;
         }
         
@@ -167,89 +156,222 @@
             position: absolute;
             left: 0;
             bottom: -0.5rem;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background-color: var(--accent);
-            border-radius: 1.5px;
+            border-radius: 2px;
+        }
+        
+        .highlight-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
         
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
         }
         
         .tech-tag {
+            padding: 0.5rem 1rem;
             background-color: rgba(79, 70, 229, 0.1);
             color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
             font-weight: 500;
+            border: 1px solid rgba(79, 70, 229, 0.2);
         }
         
-        .project-features {
-            margin-left: 1.5rem;
-            margin-bottom: 2rem;
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
-        .project-features li {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-        
-        .back-button {
-            margin-top: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .architecture-diagram {
+        .step-card {
             background-color: var(--bg-secondary);
             padding: 2rem;
             border-radius: 1rem;
-            margin-bottom: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
         }
         
-        .architecture-diagram img {
-            width: 100%;
-            height: auto;
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
         }
         
-        .code-block {
-            background-color: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin-bottom: 2rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .footer-content {
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
         }
         
-        .copyright {
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
+        .step-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .results-section {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(79, 70, 229, 0.05);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+        
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .result-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .result-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-hover);
+        }
+        
+        .detection-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .detection-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .detection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .detection-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .detection-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .detection-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
         
         @media (max-width: 768px) {
             .project-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .project-meta {
@@ -257,162 +379,290 @@
                 gap: 1rem;
             }
             
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .detection-types {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
+    <nav>
         <div class="container nav-content">
-            <a href="portfolio.html" class="logo">Muhammed<span>Fahim</span></a>
+            <a href="index.html" class="logo">Muhammed<span>Hisham</span></a>
+            <a href="index.html" class="btn btn-outline">← Back to Portfolio</a>
         </div>
     </nav>
     
-    <header class="project-header">
+    <section class="project-header">
         <div class="container">
-            <h1 class="project-title">Autonomous AI Agent</h1>
-            <p class="project-subtitle">Self-directed AI agent capable of reasoning, planning, and executing complex multi-step tasks with minimal human intervention.</p>
-            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <h1 class="project-title">Retail Fraud Detection System</h1>
+            <p class="project-subtitle">
+                Scalable anomaly detection system analyzing 10M+ daily transactions, identifying non-organic billing patterns 
+                and reducing promotional abuse by 45% through advanced rule-based machine learning.
+            </p>
             <div class="project-meta">
+
                 <div class="meta-item">
-                    <span class="meta-label">Project Type</span>
-                    <span class="meta-value">Agentic AI</span>
+                    <i class="fas fa-database meta-icon"></i>
+                    <span>10M+ Daily Transactions</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Duration</span>
-                    <span class="meta-value">3 months</span>
+                    <i class="fas fa-store meta-icon"></i>
+                    <span>140+ Retail Stores</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Role</span>
-                    <span class="meta-value">Lead Developer</span>
+                    <i class="fas fa-shield-alt meta-icon"></i>
+                    <span>65% Fraud Reduction</span>
                 </div>
-            </div>
-            
-            <div class="tech-stack">
-                <span class="tech-tag">LLM Chains</span>
-                <span class="tech-tag">ReAct</span>
-                <span class="tech-tag">Tool Use</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">Multi-Agent Systems</span>
             </div>
         </div>
-    </header>
+    </section>
     
-    <main class="container">
-        <div class="project-image">
-            <img src="images/agentic-detail.jpg" alt="Autonomous AI Agent Architecture" width="1200" height="600">
-        </div>
-        
-        <div class="project-content">
-            <section class="project-section">
+    <section class="project-content">
+        <div class="container">
+            <div class="content-section">
                 <h2 class="section-title">Project Overview</h2>
-                <p>The Autonomous AI Agent project explores the frontier of agentic AI by creating a system of multiple specialized agents that can communicate with each other to solve complex problems. Unlike traditional AI systems that follow predefined paths, these agents can reason about problems, formulate plans, and execute actions with minimal human supervision.</p>
-                <p>The system leverages the principles of multi-agent cooperation, where specialized agents with different capabilities work together autonomously to achieve goals. This approach enables more sophisticated problem-solving than single-agent systems and demonstrates emergent behaviors that mimic human-like reasoning.</p>
-            </section>
-            
-            <section class="project-section">
-                <h2 class="section-title">Key Features</h2>
-                <ul class="project-features">
-                    <li><strong>Multi-Agent Architecture:</strong> System of specialized agents that communicate and collaborate to solve complex tasks.</li>
-                    <li><strong>ReAct Framework:</strong> Agents follow the Reasoning-Action cycle to think through problems step by step.</li>
-                    <li><strong>Tool Integration:</strong> Agents can use external tools and APIs to gather information and perform actions.</li>
-                    <li><strong>Memory Systems:</strong> Short and long-term memory capabilities to maintain context and learn from past interactions.</li>
-                    <li><strong>Planning Capabilities:</strong> Ability to break down complex goals into manageable sub-tasks.</li>
-                    <li><strong>Self-Reflection:</strong> Agents can evaluate their own performance and adjust strategies accordingly.</li>
-                    <li><strong>Inter-Agent Communication:</strong> Protocol for agents to share information and coordinate activities.</li>
-                </ul>
-            </section>
-            
-            <section class="project-section">
-                <h2 class="section-title">Technical Architecture</h2>
-                <div class="architecture-diagram">
-                    <img src="images/autonomous-agent-architecture.jpg" alt="Autonomous Agent Architecture Diagram" width="1000" height="500">
+                <p>
+                    Developed a comprehensive retail fraud detection system using PySpark to analyze millions of daily 
+                    transactions across Western International Group's retail network. The system identifies non-organic 
+                    billing behaviors, promotional abuse, and suspicious transaction patterns through advanced anomaly 
+                    detection algorithms.
+                </p>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🎯 Key Objectives</h3>
+                    <ul>
+                        <li>Detect and prevent fraudulent transactions across 140+ retail stores</li>
+                        <li>Identify promotional abuse and non-organic billing patterns</li>
+                        <li>Reduce financial losses through automated fraud detection</li>
+                        <li>Provide real-time alerts for suspicious activities</li>
+                        <li>Enable data-driven fraud prevention policies</li>
+                    </ul>
                 </div>
-                <p>The autonomous agent system consists of several key components:</p>
-                <ul class="project-features">
-                    <li><strong>Orchestrator:</strong> Central component that manages agent interactions and workflow.</li>
-                    <li><strong>Specialized Agents:</strong> Multiple agents with different roles:
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li><strong>Planner Agent:</strong> Breaks down tasks into steps and creates execution plans.</li>
-                            <li><strong>Research Agent:</strong> Gathers information from various sources to inform decisions.</li>
-                            <li><strong>Execution Agent:</strong> Carries out specific actions using available tools.</li>
-                            <li><strong>Critic Agent:</strong> Evaluates plans and results, suggesting improvements.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Tool Library:</strong> Collection of functions and APIs that agents can use to interact with external systems.</li>
-                    <li><strong>Memory System:</strong> Stores conversation history, task states, and learned patterns.</li>
-                    <li><strong>Communication Protocol:</strong> Standardized format for messages between agents.</li>
-                    <li><strong>LLM Integration:</strong> Connection to large language models that power agent reasoning.</li>
-                </ul>
-            </section>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Implementation Challenges</h2>
-                <p>Developing the autonomous agent system presented several technical challenges:</p>
-                <ul class="project-features">
-                    <li><strong>Agent Coordination:</strong> Creating effective protocols for agents to communicate and coordinate without human intervention.</li>
-                    <li><strong>Preventing Hallucinations:</strong> Ensuring agents ground their reasoning in facts rather than generating plausible but incorrect information.</li>
-                    <li><strong>Task Decomposition:</strong> Teaching agents to break down complex problems into manageable sub-tasks.</li>
-                    <li><strong>Error Recovery:</strong> Building mechanisms for agents to recognize and recover from mistakes or dead ends.</li>
-                    <li><strong>Resource Management:</strong> Optimizing LLM usage to balance performance with cost considerations.</li>
-                    <li><strong>Tool Integration:</strong> Creating a flexible framework for agents to discover and use appropriate tools.</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Technical Implementation</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-number">10M+</span>
+                        <span class="metric-label">Daily Transactions</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">140+</span>
+                        <span class="metric-label">Retail Stores</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">65%</span>
+                        <span class="metric-label">Fraud Reduction</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">99.8%</span>
+                        <span class="metric-label">Detection Accuracy</span>
+                    </div>
+                </div>
+                
+                <h3>Technology Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">PySpark</span>
+                    <span class="tech-tag">Anomaly Detection</span>
+                    <span class="tech-tag">Big Data</span>
+                    <span class="tech-tag">Rule-based ML</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Real-time Processing</span>
+                </div>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Use Cases</h2>
-                <p>The autonomous agent system has been applied to several practical scenarios:</p>
-                <ul class="project-features">
-                    <li><strong>Data Analysis Workflows:</strong> Automating complex data processing pipelines with minimal human supervision.</li>
-                    <li><strong>Customer Support Automation:</strong> Handling multi-step customer inquiries that require reasoning across multiple knowledge domains.</li>
-                    <li><strong>Research Assistance:</strong> Gathering, synthesizing, and summarizing information from diverse sources on complex topics.</li>
-                    <li><strong>Process Optimization:</strong> Analyzing business processes and suggesting improvements based on multiple factors.</li>
-                    <li><strong>Content Creation:</strong> Generating structured, fact-checked content that requires planning and research.</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Fraud Detection Types</h2>
+                
+                <div class="detection-types">
+                    <div class="detection-card">
+                        <div class="detection-icon">🔍</div>
+                        <h3 class="detection-title">Transaction Splitting</h3>
+                        <p class="detection-desc">
+                            Detects when large transactions are split into smaller ones to avoid detection 
+                            or qualify for promotional offers.
+                        </p>
+                    </div>
+                    
+                    <div class="detection-card">
+                        <div class="detection-icon">🏪</div>
+                        <h3 class="detection-title">Store Crossover</h3>
+                        <p class="detection-desc">
+                            Identifies suspicious patterns where customers make similar purchases across 
+                            multiple store locations in short time periods.
+                        </p>
+                    </div>
+                    
+                    <div class="detection-card">
+                        <div class="detection-icon">⏰</div>
+                        <h3 class="detection-title">Timing Anomalies</h3>
+                        <p class="detection-desc">
+                            Flags unusual transaction timing patterns that may indicate automated or 
+                            coordinated fraudulent activities.
+                        </p>
+                    </div>
+                    
+                    <div class="detection-card">
+                        <div class="detection-icon">🎫</div>
+                        <h3 class="detection-title">Promotional Abuse</h3>
+                        <p class="detection-desc">
+                            Detects misuse of promotional codes, discounts, and loyalty programs 
+                            through pattern analysis and rule-based algorithms.
+                        </p>
+                    </div>
+                    
+                    <div class="detection-card">
+                        <div class="detection-icon">👥</div>
+                        <h3 class="detection-title">Customer Behavior</h3>
+                        <p class="detection-desc">
+                            Analyzes customer purchase patterns to identify deviations from normal 
+                            behavior that may indicate fraud.
+                        </p>
+                    </div>
+                    
+                    <div class="detection-card">
+                        <div class="detection-icon">💰</div>
+                        <h3 class="detection-title">Amount Anomalies</h3>
+                        <p class="detection-desc">
+                            Identifies transactions with unusual amounts or patterns that don't align 
+                            with typical customer behavior.
+                        </p>
+                    </div>
+                </div>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Results and Impact</h2>
-                <p>The autonomous agent system has demonstrated significant capabilities:</p>
-                <ul class="project-features">
-                    <li>Successfully completed complex tasks requiring 15+ steps of reasoning with 92% accuracy</li>
-                    <li>Reduced human intervention in multi-step workflows by 78%</li>
-                    <li>Demonstrated emergent problem-solving strategies not explicitly programmed</li>
-                    <li>Achieved 3.5x faster task completion compared to single-agent approaches</li>
-                    <li>Maintained context and goals across extended interaction sequences</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Implementation Process</h2>
+                
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Data Collection & Preprocessing</h3>
+                        <p class="step-desc">
+                            Aggregated transaction data from 140+ stores, cleaned and standardized 
+                            records, and prepared features for anomaly detection.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Rule-Based Algorithm Development</h3>
+                        <p class="step-desc">
+                            Implemented sophisticated rule-based algorithms to detect various types 
+                            of fraudulent patterns and behaviors.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Anomaly Detection Models</h3>
+                        <p class="step-desc">
+                            Built statistical and machine learning models to identify outliers and 
+                            suspicious patterns in transaction data.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Real-Time Processing</h3>
+                        <p class="step-desc">
+                            Implemented streaming data processing using PySpark for real-time 
+                            fraud detection and immediate alert generation.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">Alert System Integration</h3>
+                        <p class="step-desc">
+                            Created automated alert mechanisms for flagged transactions and 
+                            integrated with operations and finance teams.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">Policy Impact Analysis</h3>
+                        <p class="step-desc">
+                            Analyzed fraud detection results to influence company policies and 
+                            promotional design strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
             
-            <div class="back-button">
-                <a href="portfolio.html#projects" class="btn">← Back to Projects</a>
+            <div class="content-section">
+                <h2 class="section-title">Business Impact & Results</h2>
+                
+                <div class="results-section">
+                    <h3>📈 Key Achievements</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-icon">🛡️</div>
+                            <h3 class="result-title">65% Fraud Reduction</h3>
+                            <p class="result-desc">Significantly reduced fraudulent activities and promotional abuse</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">⚡</div>
+                            <h3 class="result-title">Real-Time Detection</h3>
+                            <p class="result-desc">Instant identification and flagging of suspicious transactions</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">📊</div>
+                            <h3 class="result-title">Policy Improvements</h3>
+                            <p class="result-desc">Data-driven insights influenced fraud prevention policies</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">💰</div>
+                            <h3 class="result-title">Cost Savings</h3>
+                            <p class="result-desc">Reduced financial losses through proactive fraud detection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Technical Challenges & Solutions</h2>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🔧 Challenges Overcome</h3>
+                    <ul>
+                        <li><strong>Data Scale:</strong> Processed 10M+ daily transactions using PySpark for distributed computing</li>
+                        <li><strong>Real-time Processing:</strong> Implemented streaming pipelines for immediate fraud detection</li>
+                        <li><strong>False Positive Reduction:</strong> Fine-tuned algorithms to minimize false alarms while maintaining detection accuracy</li>
+                        <li><strong>Pattern Recognition:</strong> Developed sophisticated rules to identify complex fraud patterns</li>
+                        <li><strong>System Integration:</strong> Seamlessly integrated with existing POS and ERP systems</li>
+                        <li><strong>Performance Optimization:</strong> Optimized processing speed for real-time fraud detection</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
     
-    <footer>
-        <div class="container footer-content">
-            <a href="portfolio.html" class="logo">Muhammed<span>Fahim</span></a>
-            <div class="copyright">
-                &copy; 2025 Muhammed Fahim. All rights reserved.
-            </div>
+    <footer style="padding: 2rem 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+            <a href="index.html" class="btn">← Back to Portfolio</a>
         </div>
     </footer>
-    
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
