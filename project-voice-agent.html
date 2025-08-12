@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligent Voice Agent - Muhammed Fahim</title>
+    <title>Customer Segmentation & RFM Analysis - Muhammed Hisham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -53,11 +53,6 @@
             transition: all 0.3s ease;
         }
         
-        nav.scrolled {
-            padding: 1rem 0;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-        }
-        
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -94,6 +89,18 @@
             box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
         }
         
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            box-shadow: none;
+        }
+        
         .project-header {
             padding-top: 120px;
             padding-bottom: 60px;
@@ -102,11 +109,11 @@
         
         .project-title {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .project-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
@@ -114,51 +121,33 @@
         .project-meta {
             display: flex;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
         
         .meta-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
         }
         
-        .meta-label {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .meta-value {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-        
-        .project-image {
-            width: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
-            margin-bottom: 3rem;
-            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .meta-icon {
+            color: var(--accent);
+            font-size: 1.25rem;
         }
         
         .project-content {
+            padding: 4rem 0;
+        }
+        
+        .content-section {
             margin-bottom: 4rem;
         }
         
-        .project-section {
-            margin-bottom: 3rem;
-        }
-        
         .section-title {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
             position: relative;
         }
         
@@ -167,89 +156,184 @@
             position: absolute;
             left: 0;
             bottom: -0.5rem;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background-color: var(--accent);
-            border-radius: 1.5px;
+            border-radius: 2px;
+        }
+        
+        .highlight-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
         
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
         }
         
         .tech-tag {
+            padding: 0.5rem 1rem;
             background-color: rgba(79, 70, 229, 0.1);
             color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
             font-weight: 500;
+            border: 1px solid rgba(79, 70, 229, 0.2);
         }
         
-        .project-features {
-            margin-left: 1.5rem;
-            margin-bottom: 2rem;
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
-        .project-features li {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-        
-        .back-button {
-            margin-top: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .architecture-diagram {
+        .step-card {
             background-color: var(--bg-secondary);
             padding: 2rem;
             border-radius: 1rem;
-            margin-bottom: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
         }
         
-        .architecture-diagram img {
-            width: 100%;
-            height: auto;
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.3);
         }
         
-        .code-block {
-            background-color: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin-bottom: 2rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .footer-content {
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
         }
         
-        .copyright {
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
+        .step-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .results-section {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(79, 70, 229, 0.05);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+        
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .result-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .result-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-hover);
         }
         
         @media (max-width: 768px) {
             .project-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .project-meta {
@@ -257,143 +341,246 @@
                 gap: 1rem;
             }
             
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
+    <nav>
         <div class="container nav-content">
-            <a href="portfolio.html" class="logo">Muhammed<span>Fahim</span></a>
+            <a href="index.html" class="logo">Muhammed<span>Hisham</span></a>
+            <a href="index.html" class="btn btn-outline">← Back to Portfolio</a>
         </div>
     </nav>
     
-    <header class="project-header">
+    <section class="project-header">
         <div class="container">
-            <h1 class="project-title">Intelligent Voice Agent</h1>
-            <p class="project-subtitle">A sophisticated AI voice agent powered by LLMs and integrated with telephony systems for natural conversations and customer support automation.</p>
-            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <h1 class="project-title">Customer Segmentation & RFM Analysis</h1>
+            <p class="project-subtitle">
+                Advanced customer segmentation system analyzing 2M+ customers across 140+ retail stores, 
+                achieving 25% improved retention through targeted marketing campaigns.
+            </p>
             <div class="project-meta">
+
                 <div class="meta-item">
-                    <span class="meta-label">Project Type</span>
-                    <span class="meta-value">Conversational AI</span>
+                    <i class="fas fa-users meta-icon"></i>
+                    <span>2M+ Customers Analyzed</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Duration</span>
-                    <span class="meta-value">6 months</span>
+                    <i class="fas fa-store meta-icon"></i>
+                    <span>140+ Retail Stores</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Role</span>
-                    <span class="meta-value">Lead AI Engineer</span>
+                    <i class="fas fa-chart-line meta-icon"></i>
+                    <span>35% Retention Improvement</span>
                 </div>
-            </div>
-            
-            <div class="tech-stack">
-                <span class="tech-tag">RASA</span>
-                <span class="tech-tag">Asterisk</span>
-                <span class="tech-tag">LLMs</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">TTS</span>
-                <span class="tech-tag">STT</span>
-                <span class="tech-tag">Custom Framework</span>
             </div>
         </div>
-    </header>
+    </section>
     
-    <main class="container">
-        <div class="project-image">
-            <img src="images/aivoiceagent-detail.jpg" alt="Intelligent Voice Agent Architecture" width="1200" height="600">
-        </div>
-        
-        <div class="project-content">
-            <section class="project-section">
+    <section class="project-content">
+        <div class="container">
+            <div class="content-section">
                 <h2 class="section-title">Project Overview</h2>
-                <p>The Intelligent Voice Agent is a sophisticated AI-powered voicebot that leverages open-source technologies to create natural, context-aware telephone conversations. The system integrates with Asterisk telephony infrastructure to handle inbound and outbound calls, using speech-to-text (STT) and text-to-speech (TTS) capabilities to enable seamless voice interactions.</p>
-                <p>What sets this voice agent apart is its custom flow management framework that dynamically adapts conversation paths based on user responses, allowing for complex decision trees and personalized interactions. The system handles frequently asked questions (FAQs) efficiently while maintaining context throughout the conversation.</p>
-            </section>
-            
-            <section class="project-section">
-                <h2 class="section-title">Key Features</h2>
-                <ul class="project-features">
-                    <li><strong>Natural Voice Interactions:</strong> Open-source TTS and STT engines provide high-quality voice conversion with minimal latency.</li>
-                    <li><strong>Dynamic Flow Management:</strong> Custom framework that adapts conversation paths based on user responses and context.</li>
-                    <li><strong>Asterisk Integration:</strong> Seamless connection with telephony systems for handling real phone calls.</li>
-                    <li><strong>LLM-Powered Understanding:</strong> Leveraging open-source large language models for natural language understanding and generation.</li>
-                    <li><strong>FAQ Automation:</strong> Efficient handling of common questions with contextual awareness.</li>
-                    <li><strong>Multi-Intent Recognition:</strong> Ability to identify multiple user intents within a single utterance.</li>
-                    <li><strong>Fallback Strategies:</strong> Graceful handling of out-of-scope queries with appropriate escalation paths.</li>
-                </ul>
-            </section>
-            
-            <section class="project-section">
-                <h2 class="section-title">Technical Architecture</h2>
-                <div class="architecture-diagram">
-                    <img src="images/voice-agent-architecture.jpg" alt="Voice Agent Architecture Diagram" width="1000" height="500">
+                <p>
+                    Developed a comprehensive customer segmentation system using RFM (Recency, Frequency, Monetary) analysis 
+                    to categorize customers across Western International Group's extensive retail network. The system processes 
+                    millions of transactions to identify customer segments and enable personalized marketing strategies.
+                </p>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🎯 Key Objectives</h3>
+                    <ul>
+                        <li>Segment 2M+ customers based on purchase behavior and value</li>
+                        <li>Improve customer retention through targeted campaigns</li>
+                        <li>Optimize marketing spend by focusing on high-value segments</li>
+                        <li>Enable data-driven customer relationship management</li>
+                    </ul>
                 </div>
-                <p>The system architecture consists of several interconnected components:</p>
-                <ul class="project-features">
-                    <li><strong>Asterisk PBX:</strong> Handles call routing, SIP connections, and telephony infrastructure.</li>
-                    <li><strong>Speech Processing Module:</strong> Manages STT and TTS conversions using open-source engines.</li>
-                    <li><strong>NLU Engine:</strong> RASA-based natural language understanding for intent classification and entity extraction.</li>
-                    <li><strong>Flow Manager:</strong> Custom framework that orchestrates conversation flows based on user inputs and system state.</li>
-                    <li><strong>LLM Integration:</strong> Connection to open-source large language models for enhanced understanding and response generation.</li>
-                    <li><strong>Knowledge Base:</strong> Structured repository of information for answering FAQs and providing domain-specific responses.</li>
-                </ul>
-            </section>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Implementation Challenges</h2>
-                <p>Developing the Intelligent Voice Agent presented several technical challenges:</p>
-                <ul class="project-features">
-                    <li><strong>Latency Management:</strong> Minimizing response time in the STT-processing-TTS pipeline to maintain natural conversation flow.</li>
-                    <li><strong>Context Preservation:</strong> Maintaining conversation context across multiple turns while handling interruptions and topic changes.</li>
-                    <li><strong>Telephony Integration:</strong> Creating robust connections between the AI components and Asterisk for reliable call handling.</li>
-                    <li><strong>Flow Complexity:</strong> Designing a flexible yet manageable system for complex conversation paths that adapt to user responses.</li>
-                    <li><strong>Resource Optimization:</strong> Running LLMs and speech processing efficiently on limited hardware resources.</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Technical Implementation</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-number">2M+</span>
+                        <span class="metric-label">Customers Analyzed</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">140+</span>
+                        <span class="metric-label">Retail Stores</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">92%</span>
+                        <span class="metric-label">Model Accuracy</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">35%</span>
+                        <span class="metric-label">Retention Boost</span>
+                    </div>
+                </div>
+                
+                <h3>Technology Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PySpark</span>
+                    <span class="tech-tag">RFM Analysis</span>
+                    <span class="tech-tag">Clustering Algorithms</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                </div>
+            </div>
             
-            <section class="project-section">
-                <h2 class="section-title">Results and Impact</h2>
-                <p>The Intelligent Voice Agent has significantly improved customer support operations:</p>
-                <ul class="project-features">
-                    <li>Reduced average call handling time by 45% for common inquiries</li>
-                    <li>Achieved 87% successful resolution rate for automated interactions</li>
-                    <li>Scaled to handle over 1,000 concurrent calls with consistent performance</li>
-                    <li>Decreased operational costs by automating routine customer interactions</li>
-                    <li>Improved customer satisfaction scores through natural, efficient conversations</li>
-                </ul>
-            </section>
+            <div class="content-section">
+                <h2 class="section-title">Methodology & Process</h2>
+                
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Data Collection & Preprocessing</h3>
+                        <p class="step-desc">
+                            Aggregated transaction data from 140+ stores, cleaned and standardized customer records, 
+                            and prepared RFM metrics for analysis.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">RFM Scoring</h3>
+                        <p class="step-desc">
+                            Calculated Recency, Frequency, and Monetary scores for each customer, 
+                            creating a comprehensive customer value matrix.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Segmentation Logic</h3>
+                        <p class="step-desc">
+                            Implemented custom logic-based segmentation instead of K-means due to outliers, 
+                            defining segments: Champions, Irregular Champions, High Potential Hibernators, Probable Newbies, Loyal Low Spenders, At Risk.
+                        </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Dashboard Integration</h3>
+                        <p class="step-desc">
+                            Integrated segmentation results into Power BI dashboards for business users, 
+                            enabling real-time customer insights and campaign management.
+                        </p>
+                    </div>
+                </div>
+            </div>
             
-            <div class="back-button">
-                <a href="portfolio.html#projects" class="btn">← Back to Projects</a>
+            <div class="content-section">
+                <h2 class="section-title">Customer Segments</h2>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-icon">🏆</div>
+                        <h3 class="result-title">Champions</h3>
+                        <p class="result-desc">High-value customers with recent purchases and high frequency</p>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">⭐</div>
+                        <h3 class="result-title">Irregular Champions</h3>
+                        <p class="result-desc">High-value customers with irregular purchase patterns</p>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">🚀</div>
+                        <h3 class="result-title">High Potential Hibernators</h3>
+                        <p class="result-desc">Inactive customers with high historical value potential</p>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">🆕</div>
+                        <h3 class="result-title">Probable Newbies</h3>
+                        <p class="result-desc">New customers with promising initial engagement</p>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">💎</div>
+                        <h3 class="result-title">Loyal Low Spenders</h3>
+                        <p class="result-desc">Consistent buyers with moderate spending patterns</p>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">⚠️</div>
+                        <h3 class="result-title">At Risk</h3>
+                        <p class="result-desc">Previously active customers showing declining engagement</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Business Impact & Results</h2>
+                
+                <div class="results-section">
+                    <h3>📈 Key Achievements</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-icon">📊</div>
+                            <h3 class="result-title">35% Retention Improvement</h3>
+                            <p class="result-desc">Enhanced customer retention through targeted campaigns</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">🎯</div>
+                            <h3 class="result-title">Personalized Marketing</h3>
+                            <p class="result-desc">Enabled segment-specific marketing strategies</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">💰</div>
+                            <h3 class="result-title">Optimized Spend</h3>
+                            <p class="result-desc">Reduced marketing costs by focusing on high-value segments</p>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-icon">📱</div>
+                            <h3 class="result-title">Real-time Insights</h3>
+                            <p class="result-desc">Power BI dashboards for immediate decision-making</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Technical Challenges & Solutions</h2>
+                
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🔧 Challenges Overcome</h3>
+                    <ul>
+                        <li><strong>Data Scale:</strong> Processed 2M+ customer records using PySpark for scalability</li>
+                        <li><strong>Outlier Handling:</strong> Switched from K-means to custom logic-based segmentation</li>
+                        <li><strong>Real-time Updates:</strong> Implemented automated data pipelines for fresh insights</li>
+                        <li><strong>Business Adoption:</strong> Created intuitive Power BI dashboards for non-technical users</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
     
-    <footer>
-        <div class="container footer-content">
-            <a href="portfolio.html" class="logo">Muhammed<span>Fahim</span></a>
-            <div class="copyright">
-                &copy; 2025 Muhammed Fahim. All rights reserved.
-            </div>
+    <footer style="padding: 2rem 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+            <a href="index.html" class="btn">← Back to Portfolio</a>
         </div>
     </footer>
-    
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
